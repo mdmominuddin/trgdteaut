@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Home
+{% endblock %}
+
+{% block content %}
+<style>
+  .custom-card-img {
+    height: 150px; /* Adjust the height as needed */
+    object-fit: cover; /* Maintain the aspect ratio while covering the specified height */
+  }
+</style>
+  <div class="container my-5">
+    <div class="row">
+      {% for section in Section_list %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="{{ section.image.url }}" class="card-img-top custom-card-img" alt="{{ section.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ section.name }}</h5>
+              <p class="card-text">This Section deals with Trg Policy, Trg, Foreign Trg, Visits of {{ section.name }} of Bangladesh Armed Forces.</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

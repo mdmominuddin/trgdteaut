@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (
     home,
-    svcs_list, create_svcs, update_svcs, delete_svcs,
+    create_svcs, update_svcs, delete_svcs,
     indl_list, create_indl,
     country_list,
     govt_order_list,
@@ -10,13 +10,14 @@ from .views import (
     course_acceptance_list,
     visit_list,
     yearly_state_list,
+    sections,
 )
 
 urlpatterns = [
     path('', home, name='home'),
 
     # Svcs URLs
-    path('svcs/', svcs_list, name='svcs_list'),
+    path('section/', sections, name='section'),
     path('svcs/create/', create_svcs, name='create_svcs'),
     path('svcs/update/<int:pk>/', update_svcs, name='update_svcs'),
     path('svcs/delete/<int:pk>/', delete_svcs, name='delete_svcs'),

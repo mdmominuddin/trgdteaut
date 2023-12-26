@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Svcs, Indl, Country, GovtOrder, Course, CourseOffer, CourseAcceptance, Visit, YearlyState
+from .models import Svcs, Indl, Country, GovtOrder, Course, CourseOffer, CourseAcceptance, Visit, YearlyState, Sections
 from .forms import SvcsForm, IndlForm, CountryForm, GovtOrderForm, CourseForm, CourseOfferForm, CourseAcceptanceForm, VisitForm, YearlyStateForm
 
 def home(request):
@@ -8,7 +8,7 @@ def home(request):
         correct_password = "998877113355"
 
         if entered_password == correct_password:
-            return redirect('svcs_list')
+            return redirect('section')
 
         else:
             return render(request, 'home.html', {'message': 'Incorrect password. Please try again.'})
@@ -17,9 +17,10 @@ def home(request):
 
 # Views for Svcs model
 
-def svcs_list(request):
-    svcs_list = Svcs.objects.all()
-    return render(request, 'svcs_list.html', {'svcs_list': svcs_list})
+def sections(request):
+    Section_list = Sections.objects.all()
+    return render(request, 'sections.html', {'Section_list': Section_list})
+
 
 def create_svcs(request):
     if request.method == 'POST':

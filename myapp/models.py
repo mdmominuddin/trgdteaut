@@ -5,15 +5,29 @@ class Svcs(models.Model):
     NAVY = 'Navy'
     AIR_FORCE = 'Air Force'
     JT_TRG = 'Jt Trg'
+    AFD = 'AFD'
+
+
 
     SERVICE_CHOICES = [
         (ARMY, 'Army'),
         (NAVY, 'Navy'),
         (AIR_FORCE, 'Air Force'),
         (JT_TRG, 'Jt Trg'),
+        (AFD, 'AFD'),
     ]
 
     name = models.CharField(max_length=20, choices=SERVICE_CHOICES)
+
+    def __str__(self):
+        return self.name
+
+from django.db import models
+
+class Sections(models.Model):
+    name = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='section_images/')
+    # Other fields...
 
     def __str__(self):
         return self.name

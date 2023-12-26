@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Svcs, Indl, Country, GovtOrder, Course, CourseOffer, CourseAcceptance, Visit, YearlyState
+from .models import Svcs, Indl, Country, GovtOrder, Course, CourseOffer, CourseAcceptance, Visit, YearlyState, Sections
 
 @admin.register(Svcs)
 class SvcsAdmin(admin.ModelAdmin):
@@ -44,3 +44,5 @@ class VisitAdmin(admin.ModelAdmin):
 @admin.register(YearlyState)
 class YearlyStateAdmin(admin.ModelAdmin):
     pass
+
+admin.site.register(Sections)
