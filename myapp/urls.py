@@ -11,6 +11,7 @@ from .views import (
     visit_list,
     yearly_state_list,
     sections,
+    section_detail
 )
 
 urlpatterns = [
@@ -18,6 +19,7 @@ urlpatterns = [
 
     # Svcs URLs
     path('section/', sections, name='section'),
+    path('section/<int:section_id>/', section_detail, name='section_detail'),
     path('svcs/create/', create_svcs, name='create_svcs'),
     path('svcs/update/<int:pk>/', update_svcs, name='update_svcs'),
     path('svcs/delete/<int:pk>/', delete_svcs, name='delete_svcs'),

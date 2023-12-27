@@ -7,21 +7,57 @@
 {% block content %}
 <style>
   .custom-card-img {
-    height: 150px; /* Adjust the height as needed */
-    object-fit: cover; /* Maintain the aspect ratio while covering the specified height */
+    height: 135px;
+    object-fit: cover;
   }
+
+  .custom-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  }
+
+  .custom-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.4);
+  }
+
+  .card-title {
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .card-text {
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .card-body {
+    background-color: #f8f8f8;
+  }
+
+
+  a {
+    text-decoration: none;
+  }
+
 </style>
   <div class="container my-5">
     <div class="row">
       {% for section in Section_list %}
         <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <img src="{{ section.image.url }}" class="card-img-top custom-card-img" alt="{{ section.name }}">
-            <div class="card-body">
-              <h5 class="card-title">{{ section.name }}</h5>
-              <p class="card-text">This Section deals with Trg Policy, Trg, Foreign Trg, Visits of {{ section.name }} of Bangladesh Armed Forces.</p>
+          <a href="{% url 'section_detail' section.id %}">
+            <div class="card h-100 custom-card">
+              <img src="{{ section.image.url }}" class="card-img-top custom-card-img" alt="{{ section.name }}">
+              <div class="card-body">
+                <h5 class="card-title bg-light ">{{ section.name }}</h5>
+                <p class="card-text text-primary text-bordered">This section deals with training policy, training, foreign training, and visits of {{ section.name }} of Bangladesh Armed Forces.</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       {% endfor %}
     </div>

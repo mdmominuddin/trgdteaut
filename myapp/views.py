@@ -22,6 +22,13 @@ def sections(request):
     return render(request, 'sections.html', {'Section_list': Section_list})
 
 
+
+def section_detail(request, section_id):
+    section = get_object_or_404(Sections, id=section_id)
+    template_name = f"{section.template_name}.html"
+    return render(request, template_name, {'section': section})
+
+
 def create_svcs(request):
     if request.method == 'POST':
         form = SvcsForm(request.POST)
